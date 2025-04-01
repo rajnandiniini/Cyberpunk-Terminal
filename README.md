@@ -50,14 +50,14 @@ A futuristic cyberpunk-themed terminal interface with a matrix rain effect 🌧�
 ## 📷 Preview  
 
 <img src="https://raw.githubusercontent.com/rajnandiniini/Matrix/main/images/p1.png" width="300" height="auto">
-
+<img src="https://raw.githubusercontent.com/rajnandiniini/Matrix/main/images/p2.png" width="300" height="auto">
 
 
 
 
 ## ⚙️ Setup  
 
-Try it here: **[Pixel Art Canvas](https://rajnandiniini.github.io/Matrix/matrix.html)**  
+Try it here: **[Cyberpunk Terminal](https://rajnandiniini.github.io/Matrix/matrix.html)**  
 
 ## Contributing 🤝
 
