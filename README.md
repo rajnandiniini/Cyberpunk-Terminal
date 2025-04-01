@@ -46,6 +46,19 @@ A futuristic cyberpunk-themed terminal interface with a matrix rain effect 🌧�
 - `ascii`: Displays ASCII art in the terminal.
 - `alert [message]`: Displays a system alert with a custom message.
 
+
+## 📷 Preview  
+
+<img src="https://raw.githubusercontent.com/rajnandiniini/Matrix/main/images/p1.png" width="300" height="auto">
+
+
+
+
+
+## ⚙️ Setup  
+
+Try it here: **[Pixel Art Canvas](https://rajnandiniini.github.io/Matrix/matrix.html)**  
+
 ## Contributing 🤝
 
 Feel free to contribute by opening issues or submitting pull requests. Contributions are welcome!
