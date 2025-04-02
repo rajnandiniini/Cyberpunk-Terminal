@@ -57,7 +57,7 @@ A futuristic cyberpunk-themed terminal interface with a matrix rain effect 🌧�
 
 ## ⚙️ Setup  
 
-Try it here: **[Cyberpunk Terminal](https://rajnandiniini.github.io/Matrix/matrix.html)**  
+Try it here: **[Cyberpunk Terminal](https://rajnandiniini.github.io/Cyberpunk-Terminal/)**  
 
 ## Contributing 🤝
 
