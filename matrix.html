@@ -205,7 +205,6 @@
         </div>
         
         <div class="terminal-body" id="terminalBody">
-            <!-- Terminal output will be added here -->
         </div>
         
         <div class="terminal-input-container">
@@ -215,33 +214,29 @@
     </div>
     
     <script>
-        // Matrix Rain Effect
         const canvas = document.getElementById("matrixCanvas");
         const ctx = canvas.getContext("2d");
 
         canvas.width = window.innerWidth;
         canvas.height = window.innerHeight;
 
-        // More diverse character set for a unique look
         const japaneseChars = "日本語カタカナひらがなアイウエオ月火水木金土日王正国会人入出山下上北南東西".split("");
         const latinChars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789@#$%^&*<>[]{}|~`".split("");
         const binaryChars = "01".split("");
         const symbolChars = "⌘⌥⇧⌃⎋⏎⌫∞§¶†‡※⁂⁑⁕★☆♠♣♥♦♤♧♡♢♚♛♜♝♞♟".split("");
         
-        // Combine all character sets
         const allCharacters = [...japaneseChars, ...latinChars, ...binaryChars, ...symbolChars];
         
         const fontSize = 14;
         const columns = Math.floor(canvas.width / fontSize);
         
-        // Store drops with various speeds and colors
         const drops = [];
         for (let i = 0; i < columns; i++) {
             drops.push({
                 y: Math.random() * canvas.height,
                 speed: Math.random() * 0.5 + 0.5,
                 length: Math.floor(Math.random() * 20) + 5,
-                colorHue: Math.random() * 60 + 120, // Green to blue-green hue
+                colorHue: Math.random() * 60 + 120, 
                 charSet: Math.random() > 0.7 ? japaneseChars : 
                          Math.random() > 0.5 ? latinChars : 
                          Math.random() > 0.3 ? symbolChars : binaryChars
@@ -256,18 +251,14 @@
                 const drop = drops[i];
                 const x = i * fontSize;
                 
-                // Create a gradient for each drop
                 const headY = drop.y * fontSize;
                 
-                // Draw the stream of characters with fading effect
                 for (let j = 0; j < drop.length; j++) {
                     const charY = headY - j * fontSize;
                     if (charY < 0) continue;
                     
-                    // Fade color intensity based on position in stream
                     const alpha = 1 - j / drop.length;
                     
-                    // First character is brightest
                     if (j === 0) {
                         ctx.fillStyle = `rgba(255, 255, 255, ${alpha})`;
                     } else {
@@ -276,16 +267,13 @@
                     
                     ctx.font = fontSize + "px 'Share Tech Mono', monospace";
                     
-                    // Randomly change characters in the stream
                     const charSet = drop.charSet;
                     const char = charSet[Math.floor(Math.random() * charSet.length)];
                     ctx.fillText(char, x, charY);
                 }
                 
-                // Advance the drop
                 drop.y += drop.speed;
                 
-                // Reset when off screen with random delay
                 if (drop.y * fontSize > canvas.height && Math.random() > 0.99) {
                     drop.y = 0;
                     drop.speed = Math.random() * 0.5 + 0.5;
@@ -295,12 +283,10 @@
             }
         }
 
-        // Terminal functionality
         const terminalBody = document.getElementById("terminalBody");
         const terminalInput = document.getElementById("terminalInput");
         const timestamp = document.getElementById("timestamp");
         
-        // Available commands
         const commands = {
             help: {
                 description: "Display available commands",
@@ -345,7 +331,6 @@
                             return "<span class='error'>Invalid density. Use a value between 0.1 and 2.</span>";
                         }
                         
-                        // Adjust column count based on density
                         const newColumns = Math.floor(columns * density);
                         drops.length = newColumns;
                         
@@ -374,7 +359,6 @@
                 execute: (args) => {
                     const target = args[0] || "unknown";
                     
-                    // Add glitch effect to terminal
                     terminalBody.classList.add("glitch");
                     setTimeout(() => {
                         terminalBody.classList.remove("glitch");
@@ -436,20 +420,16 @@
             return steps.join("\n");
         }
         
-        // Process user input
         terminalInput.addEventListener("keydown", (e) => {
             if (e.key === "Enter") {
                 const input = terminalInput.value.trim();
                 terminalInput.value = "";
                 
-                // Add input to terminal output
                 addOutput(`<span class='command'>> ${input}</span>`);
                 
                 if (input) {
-                    // Parse command and arguments
                     const [cmd, ...args] = input.split(" ");
                     
-                    // Execute command if it exists
                     if (commands[cmd]) {
                         const output = commands[cmd].execute(args);
                         if (output) {
@@ -461,7 +441,6 @@
                     }
                 }
                 
-                // Scroll to bottom
                 terminalBody.scrollTop = terminalBody.scrollHeight;
             }
         });
@@ -473,7 +452,6 @@
             terminalBody.appendChild(outputElement);
         }
         
-        // Update timestamp
         function updateTimestamp() {
             const now = new Date();
             const hours = String(now.getHours()).padStart(2, "0");
@@ -482,7 +460,6 @@
             timestamp.textContent = `${hours}:${minutes}:${seconds}`;
         }
         
-        // Initial welcome message
         function displayWelcomeMessage() {
             addOutput(`<span class='success'>NEXUS-9 TERMINAL v4.5.2</span>`);
             addOutput(`<span class='info'>Cyberpunk Interface Initialized</span>`);
@@ -490,10 +467,8 @@
             addOutput("");
         }
         
-        // Initialize terminal
         displayWelcomeMessage();
         
-        // Animation loop
         function animate() {
             drawMatrix();
             updateTimestamp();
@@ -502,12 +477,10 @@
         
         animate();
         
-        // Handle window resize
         window.addEventListener("resize", () => {
             canvas.width = window.innerWidth;
             canvas.height = window.innerHeight;
             
-            // Recalculate columns
             const newColumns = Math.floor(canvas.width / fontSize);
             const currentDrops = [...drops];
             
